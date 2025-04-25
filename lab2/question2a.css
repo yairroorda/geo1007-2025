@@ -1,0 +1,22 @@
+body {
+  background-color: #6f00ff;
+}
+
+ul, ol {
+  border: 3px solid #000;
+  width: fit-content;
+}
+
+.list_a {
+  font-family: "comic sans ms", cursive, sans-serif;
+}
+
+.thick_border {
+  border: 5px solid #000;
+  width: fit-content;
+}
+
+.lab-title {
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 1);
+  color: white;
+}

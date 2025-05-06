@@ -47,9 +47,9 @@ var map = L.map("map-canvas", {
 
 // 2. aerial photo * not working at this moment (see Assignment)
 //    - can be switched on/off by toggle thru L.control.layers (see below in this script)
-var wms_aerial_url = "https://geodata1.nationaalgeoregister.nl/luchtfoto/wms?";
+var wms_aerial_url = "https://service.pdok.nl/hwh/luchtfotorgb/wms/v1_0?";
 var basemap_aerial = new L.tileLayer.wms(wms_aerial_url, {
-  layers: ["luchtfoto_png"],
+  layers: ["2024_ortho25"],
   styles: "",
   format: "image/png",
   transparent: true,
@@ -71,8 +71,46 @@ var sound = new L.tileLayer.wms(wms_sound_url, {
   pointerCursor: true,
 });
 
+
+// 3. a thematic WMS as overlay map
+var parcels_url = "http://localhost:8080/geoserver/yair/wms?";
+var parcels = new L.tileLayer.wms(parcels_url, {
+  layers: ["parcels"],
+  styles: "",
+  format: "image/png",
+  transparent: true,
+  attribution:
+    'yair',
+  pointerCursor: true,
+});
+
+var windsnelheid_url = "https://service.pdok.nl/rvo/windkaart/wms/v1_0?";
+var wind = new L.tileLayer.wms(windsnelheid_url, {
+  layers: ["windsnelheden100m"],
+  styles: "",
+  format: "image/png",
+  transparent: true,
+  attribution:
+    'PDOK',
+  pointerCursor: true,
+});
+
+var others_url = "http://localhost:8080/geoserver/yair/wms?";
+var others = new L.tileLayer.wms(others_url, {
+  layers: ["WATERDEEL_VLAK", "GEBOUW_VLAK"],
+  styles: "waterdeel_vlak,waterdeel_vlak",
+  format: "image/png",
+  transparent: true,
+  attribution:
+    'yair',
+  pointerCursor: true,
+});
+
 var overlays = {
   "Road noise [WMS]": sound,
+  "parcels [WMS]": parcels,
+  "water+gebouw [WMS]": others,
+  "Wind speed [WMS]": wind,
 };
 
 var baseLayers = {

@@ -297,21 +297,6 @@ var allFunctions = function () {
       requestWMSmap(lat, lng);
     }
   });
-
-  document
-    .querySelector("section#geonames button")
-    .addEventListener("click", function (event) {
-      searchFromInput();
-    });
-
-  document
-    .querySelector("section#geonames input")
-    .addEventListener("keypress", function (event) {
-      // 13 = the enter key
-      if (event.keyCode === 13) {
-        searchFromInput();
-      }
-    });
-};
-
+}
 document.addEventListener("DOMContentLoaded", allFunctions);
+
